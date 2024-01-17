@@ -1,0 +1,16 @@
+apiVersion: skaffold/v1
+kind: Config
+metadata:
+  name: mktplace-develop-notification-engine
+build:
+  local:
+    push: false
+  artifacts:
+    - image: newerton/notification-engine
+      context: .
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "src/**/*.*"
+            dest: .
