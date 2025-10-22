@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v3';
 
 import { CreateValidationSchema } from '@app/@common/application/validators/zod/schemas';
 

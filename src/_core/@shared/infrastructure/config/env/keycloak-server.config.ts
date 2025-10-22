@@ -38,11 +38,7 @@ export class KeycloakServerConfig {
   public static readonly USERS_CREDENTIALS_SECRET: string =
     this.envRequiredAsString('KEYCLOAK_USERS_CREDENTIALS_SECRET');
 
-  private static envRequiredAsString(key): string {
+  private static envRequiredAsString(key: string): string {
     return env.get(key).required().asString();
-  }
-
-  private static envRequiredAsPortNumber(key): number {
-    return env.get(key).required().asPortNumber();
   }
 }

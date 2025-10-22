@@ -3,7 +3,8 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
 
-import { KeycloakUseCaseException } from '@core/@shared/infrastructure/adapter/identify-and-access/keycloak/exception/keycloak-error.exception';
+import { Code } from '@core/@shared/domain/error/Code';
+import { Exception } from '@core/@shared/domain/exception/Exception';
 import { KeycloakServerConfig } from '@core/@shared/infrastructure/config/env';
 
 import { EmailSendCredentialsConfirmInput } from '../dto';
@@ -19,7 +20,7 @@ export class EmailSendCredentialsConfirmUseCase {
     private readonly httpService: HttpService,
   ) {}
 
-  async execute(input: EmailSendCredentialsConfirmInput): Promise<void> {
+  async execute(input: EmailSendCredentialsConfirmInput): Promise<any> {
     const { userId, actions } = input;
 
     const baseInternalUrl = KeycloakServerConfig.BASE_INTERNAL_URL;
@@ -31,18 +32,19 @@ export class EmailSendCredentialsConfirmUseCase {
       this.client.send('auth.credentials', {}),
     );
 
-    return this.httpService.axiosRef
-      .put(url, actions, {
+    try {
+      const response = await this.httpService.axiosRef.put(url, actions, {
         headers: {
           authorization: `Bearer ${access_token}`,
         },
-      })
-      .then((response) => response.data)
-      .catch((e) => new KeycloakUseCaseException(e));
-    // .catch(() =>
-    //   this.logger.error(
-    //     `E-mail not sent to userId ${userId} and actions ${actions}`,
-    //   ),
-    // )
+      });
+      return response.data;
+    } catch (e) {
+      throw Exception.new({
+        code: Code.UNAUTHORIZED.code,
+        overrideMessage: 'Error sending credentials email',
+        data: { originalError: e },
+      });
+    }
   }
 }

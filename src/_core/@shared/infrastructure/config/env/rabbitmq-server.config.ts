@@ -24,13 +24,14 @@ export class RabbitMQServerConfig {
 
   public static readonly RABBITMQ_CERTIFICATE_AUTH: string = env
     .get('RABBITMQ_CERTIFICATE_AUTH')
+    .default('')
     .asString();
 
-  private static envRequiredAsString(key): string {
+  private static envRequiredAsString(key: string): string {
     return env.get(key).required().asString();
   }
 
-  private static envRequiredAsPortNumber(key): number {
+  private static envRequiredAsPortNumber(key: string): number {
     return env.get(key).required().asPortNumber();
   }
 }

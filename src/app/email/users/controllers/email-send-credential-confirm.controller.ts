@@ -11,7 +11,7 @@ export class EmailSendCredentialsConfirmController {
   @MessagePattern('email.users.send-credential-confirm')
   async create(
     @Payload() payload: EmailSendCredentialsConfirmInput,
-  ): Promise<void> {
+  ): Promise<any> {
     return this.useCase.execute(payload);
   }
 }

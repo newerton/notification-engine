@@ -43,7 +43,7 @@ import { EmailSendCredentialsConfirmUseCase } from './use-cases';
     ]),
     KeycloakConnectModule.register({
       authServerUrl: KeycloakServerConfig.BASE_INTERNAL_URL,
-      realm: KeycloakServerConfig.REALM as string,
+      realm: KeycloakServerConfig.REALM,
       clientId: KeycloakServerConfig.API_GATEWAY_CLIENT_ID,
       secret: KeycloakServerConfig.API_GATEWAY_SECRET,
     }),
