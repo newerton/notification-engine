@@ -1,4 +1,4 @@
 export class EmailSendCredentialsConfirmInput {
-  userId: string;
-  actions: string[];
+  declare userId: string;
+  declare actions: string[];
 }

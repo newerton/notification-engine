@@ -1,8 +1,7 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-
 import { kafkaConfig } from '@app/@common/application/config';
 import { EmailModule } from '@app/email/email.module';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [

@@ -6,10 +6,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
+    "target": "es2024",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "rootDir": "./",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
@@ -18,24 +18,13 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
+    "types": ["jest"],
     "paths": {
-      "@core/*": [
-        "./src/_core/*"
-      ],
-      "@app/*": [
-        "./src/app/*"
-      ],
-      "@test/*": [
-        "./test/*"
-      ]
+      "@core/*": ["./src/_core/*"],
+      "@app/*": ["./src/app/*"],
+      "@test/*": ["./test/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "test/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

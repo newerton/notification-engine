@@ -1,11 +1,10 @@
+import { Code } from '@core/@shared/domain/error/Code';
+import { Exception } from '@core/@shared/domain/exception/Exception';
+import { KeycloakServerConfig } from '@core/@shared/infrastructure/config/env';
 import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { lastValueFrom } from 'rxjs';
-
-import { Code } from '@core/@shared/domain/error/Code';
-import { Exception } from '@core/@shared/domain/exception/Exception';
-import { KeycloakServerConfig } from '@core/@shared/infrastructure/config/env';
 
 import { EmailSendCredentialsConfirmInput } from '../dto';
 

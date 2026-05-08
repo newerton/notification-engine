@@ -1,0 +1,31 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": [
+        "./src/_core/*"
+      ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@test/*": [
+        "./test/*"
+      ]
+    },
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true,
+      "dynamicImport": true
+    },
+    "target": "es2024",
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    }
+  },
+  "module": {
+    "type": "commonjs"
+  },
+  "sourceMaps": true
+}

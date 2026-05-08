@@ -1,13 +1,12 @@
-import { HttpModule } from '@nestjs/axios';
-import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { KeycloakConnectModule } from 'nest-keycloak-connect';
-
 import {
   ApiServerConfig,
   KafkaServerConfig,
   KeycloakServerConfig,
 } from '@core/@shared/infrastructure/config/env';
+import { HttpModule } from '@nestjs/axios';
+import { Module } from '@nestjs/common';
+import { ClientsModule, Transport } from '@nestjs/microservices';
+import { KeycloakConnectModule } from 'nest-keycloak-connect';
 
 import { EmailSendCredentialsConfirmController } from './controllers';
 import { EmailSendCredentialsConfirmUseCase } from './use-cases';

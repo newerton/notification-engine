@@ -1,9 +1,8 @@
+import { KafkaServerConfig } from '@core/@shared/infrastructure/config/env';
+import { ApiServerConfig } from '@core/@shared/infrastructure/config/env/api-server.config';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-
-import { KafkaServerConfig } from '@core/@shared/infrastructure/config/env';
-import { ApiServerConfig } from '@core/@shared/infrastructure/config/env/api-server.config';
 
 import { MainModule } from './main.module';
 

@@ -1,7 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { MainModule } from 'src/main.module';
+import { MainModule } from '../../src/main.module';
 
 export async function createNestApplication({
   onBeforeInit,
