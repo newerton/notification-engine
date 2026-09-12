@@ -1,12 +1,10 @@
 import {
   ApiServerConfig,
   KafkaServerConfig,
-  KeycloakServerConfig,
 } from '@core/@shared/infrastructure/config/env';
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
-import { KeycloakConnectModule } from 'nest-keycloak-connect';
 
 import { EmailSendCredentialsConfirmController } from './controllers';
 import { EmailSendCredentialsConfirmUseCase } from './use-cases';
@@ -40,12 +38,6 @@ import { EmailSendCredentialsConfirmUseCase } from './use-cases';
         },
       },
     ]),
-    KeycloakConnectModule.register({
-      authServerUrl: KeycloakServerConfig.BASE_INTERNAL_URL,
-      realm: KeycloakServerConfig.REALM,
-      clientId: KeycloakServerConfig.API_GATEWAY_CLIENT_ID,
-      secret: KeycloakServerConfig.API_GATEWAY_SECRET,
-    }),
   ],
   controllers: [EmailSendCredentialsConfirmController],
   providers: [EmailSendCredentialsConfirmUseCase],
